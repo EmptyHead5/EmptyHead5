@@ -1,1 +1,37 @@
+.data
+    number1: .word 5
+    number2:.word 10
+.text
+      lw $t0,number1
+      lw $t1,number2
+      add $t2,$t0,$t1  #t2 = t0 +t1
+      
+      li $v0, 1
+      add $a0,$zero,$t2
+      syscall
+#需要名且一个一个概念，对于汇编语言而言，所有对变量的操作都需要首先放在寄存器内。
+#后使用add方法，将t0和t1的值相加储存在 t2内这也是以为汇编语言的特性
+#$zero是一个特殊的寄存器，它恒定为0，并且也由于add的特殊性所以需要使用
 
+.data
+      number1:.word 20
+      number2:.word 8
+.text
+   lw $s0, number1
+   lw $s1, number2
+   
+   sub $t0,$s0,$s1 #t0 - s0-s1
+   
+   li $v0,1
+   move $a0,$t0
+   syscall
+
+
+
+所使用的对于sub和add而言，不同的t和s寄存器都是可以的
+t所代表的为Temporary Registers
+s所代表为Saved Registers
+对于之后的print环节中必须将要打印的值存储到指定的寄存器中（如 $a0 或浮点寄存器）
+sub 和 add分别使用了两种储存方法，
+一个是使用add 方法本身
+另一个则是使用mover直接移动
