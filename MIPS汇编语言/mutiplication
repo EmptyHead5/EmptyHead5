@@ -1,0 +1,39 @@
+.data
+
+.text
+    addi $s0,$zero,4
+    addi $s1,$zero,2
+    
+    mul $t0,$s0,$s1
+    # print it
+    li $v0,1
+    move $a0,$t0
+    syscall
+
+.data
+
+.text
+    addi $t0,$zero,4
+     addi $t1,$zero,2
+     mult $t0,$t1 
+     mflo $s0
+    # print it
+    li $v0,1
+    move $a0,$s0
+    syscall
+
+
+.data
+
+.text
+    addi $s0,$zero,4
+    
+    sll $t0,$s0, 2
+    # print it
+    li $v0,1
+    move $a0,$t0
+    syscall
+
+
+#对于此时的各种存储的寄存器而言，数据储存在s或者t寄存器并不会对结果造成影响
+#不过需要注意的是，在函数调用或涉及更复杂的程序时，使用保存寄存器（$s）更为合适，因为它们的值通常在整个程序或函数中保持不变。
